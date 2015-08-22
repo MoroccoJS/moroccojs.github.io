@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8">
     <title>Jobs | MoroccoJS</title>
-    <meta name="description" content="Job offers and opportunities">
     <meta name="author" content="SilverPillar">
     <meta name="description" content="Job offers and opportunities">
 <meta property="og:type" content="website">
@@ -51,7 +50,10 @@
     <div class="item">
       <div class="ui transparent icon input">
         <i class="search icon"></i>
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://moroccojs.org"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+          <input name="q" results="0" class="search-form-input" placeholder="Search" type="text">
+          <input name="sitesearch" value="https://moroccojs.org" type="hidden">
+        </form>
       </div>
     </div>
     <a href="/about" title="About" class="item grey ">About</a>
@@ -133,5 +135,13 @@
 
     <script src="/components/jquery/dist/jquery.min.js" type="text/javascript"></script>
     <script src="/components/semantic-ui/dist/semantic.min.js" type="text/javascript"></script>
+    <script src="/components/highlightjs/highlight.pack.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+      $('figure.highlight').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });
+    </script>
   </body>
 </html>

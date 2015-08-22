@@ -91,22 +91,116 @@ header .container .jumbotron .header {
 .main-section .section-content {
   flex: 1;
   background: #fff;
-  border-right: 1px solid rgba(0,0,0,0.15);
+  border-right: 1px solid rgba(0,0,0,0.1);
   padding: 13px 15px;
 }
-.main-section .column .card .content .meta {
+.main-section .section-content .article-wrapper {
+  padding-bottom: 30px;
+  margin-bottom: 20px;
+}
+.main-section .section-content .article-wrapper .post-meta {
+  list-style: none;
+  padding: 0;
+  margin-top: 0;
+}
+.main-section .section-content .article-wrapper .post-meta li {
+  display: inline;
+  margin-right: 20px;
+  color: rgba(0,0,0,0.4);
+}
+.main-section .section-content .article-wrapper .post-meta li i {
+  color: rgba(0,0,0,0.87);
+}
+.main-section .section-content .article-wrapper .post-meta li img {
+  display: inline;
+  box-shadow: none;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  margin-top: -2px;
+}
+.main-section .section-content .article-wrapper .post-meta li a {
+  color: rgba(0,0,0,0.4);
+}
+.main-section .section-content .article-wrapper .post-meta li a:hover {
+  text-decoration: underline;
+}
+.main-section .section-content .article-wrapper blockquote {
+  border-left: 4px solid rgba(0,0,0,0.2);
+  padding-left: 10px;
+}
+.main-section .section-content .article-wrapper blockquote footer {
+  background: #fff;
+  color: rgba(0,0,0,0.87);
+  height: 100%;
+  border-top: none;
+}
+.main-section .section-content .article-wrapper blockquote footer cite:before {
+  content: "—";
+  padding: 0 5px;
+}
+.main-section .section-content .article-wrapper img {
+  display: block;
+  max-width: 100%;
+  margin: 0 auto;
+  border-radius: 2px;
+  box-shadow: 0 0 8px 0px #bebebe;
+  margin-bottom: 20px;
+}
+.main-section .section-content .article-wrapper figure.highlight {
+  margin: 20px 0 20px 0;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 4px;
+  padding: 0;
+}
+.main-section .section-content .article-wrapper figure.highlight figcaption {
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  padding: 5px 10px;
+  background: rgba(0,0,0,0.1);
+  font-weight: bold;
+}
+.main-section .section-content .article-wrapper figure.highlight .gutter {
+  padding: 0 10px 0 10px;
+  border-right: 1px solid rgba(255,255,255,0.05);
+}
+.main-section .section-content .article-wrapper figure.highlight .gutter .line,
+.main-section .section-content .article-wrapper figure.highlight .gutter .hljs-number {
+  color: rgba(255,255,255,0.4) !important;
+}
+.main-section .section-content .article-wrapper figure.highlight .code {
+  padding-left: 10px;
+}
+.main-section .section-content .article-wrapper .video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  padding-top: 25px;
+  height: 0;
+  margin-bottom: 20px;
+}
+.main-section .section-content .article-wrapper .video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.main-section .section-content .column .card .content .meta {
   margin-bottom: 8px;
 }
-.main-section .column .card .content .description {
+.main-section .section-content .column .card .content .description {
   display: inline;
 }
-.main-section .column .card .content .post-img {
+.main-section .section-content .column .card .content .post-img {
   width: 85px;
   float: left;
   margin-right: 12px;
   border-radius: 2px;
 }
-.main-section .column.paginator {
+.main-section .section-content .column .card .extra.content a:hover {
+  text-decoration: underline;
+  color: rgba(0,0,0,0.4);
+}
+.main-section .section-content .column.paginator {
   text-align: center;
   margin-bottom: 13px;
 }
@@ -195,3 +289,158 @@ footer .container p span a {
 footer .container p span a:hover {
   color: rgba(255,255,255,0.6);
 }
+/*
+
+Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-license.org/
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #23241f;
+  -webkit-text-size-adjust: none;
+}
+
+.hljs,
+.hljs-tag,
+.css .hljs-rule,
+.css .hljs-value,
+.aspectj .hljs-function,
+.css .hljs-function
+.hljs-preprocessor,
+.hljs-pragma {
+  color: #f8f8f2;
+}
+
+.hljs-strongemphasis,
+.hljs-strong,
+.hljs-emphasis {
+  color: #a8a8a2;
+}
+
+.hljs-bullet,
+.hljs-blockquote,
+.hljs-horizontal_rule,
+.hljs-number,
+.hljs-regexp,
+.alias .hljs-keyword,
+.hljs-literal,
+.hljs-hexcolor {
+  color: #ae81ff;
+}
+
+.hljs-tag .hljs-value,
+.hljs-code,
+.hljs-title,
+.css .hljs-class,
+.hljs-class .hljs-title:last-child {
+  color: #a6e22e;
+}
+
+.hljs-link_url {
+  font-size: 80%;
+}
+
+.hljs-strong,
+.hljs-strongemphasis {
+  font-weight: bold;
+}
+
+.hljs-emphasis,
+.hljs-strongemphasis,
+.hljs-class .hljs-title:last-child,
+.hljs-typename {
+  font-style: italic;
+}
+
+.hljs-keyword,
+.ruby .hljs-class .hljs-keyword:first-child,
+.ruby .hljs-function .hljs-keyword,
+.hljs-function,
+.hljs-change,
+.hljs-winutils,
+.hljs-flow,
+.nginx .hljs-title,
+.tex .hljs-special,
+.hljs-header,
+.hljs-attribute,
+.hljs-symbol,
+.hljs-symbol .hljs-string,
+.hljs-tag .hljs-title,
+.hljs-value,
+.alias .hljs-keyword:first-child,
+.css .hljs-tag,
+.css .unit,
+.css .hljs-important {
+  color: #f92672;
+}
+
+.hljs-function .hljs-keyword,
+.hljs-class .hljs-keyword:first-child,
+.hljs-aspect .hljs-keyword:first-child,
+.hljs-constant,
+.hljs-typename,
+.hljs-name,
+.css .hljs-attribute {
+  color: #66d9ef;
+}
+
+.hljs-variable,
+.hljs-params,
+.hljs-class .hljs-title,
+.hljs-aspect .hljs-title {
+  color: #f8f8f2;
+}
+
+.hljs-string,
+.css .hljs-id,
+.hljs-subst,
+.hljs-type,
+.ruby .hljs-class .hljs-parent,
+.hljs-built_in,
+.django .hljs-template_tag,
+.django .hljs-variable,
+.smalltalk .hljs-class,
+.django .hljs-filter .hljs-argument,
+.smalltalk .hljs-localvars,
+.smalltalk .hljs-array,
+.hljs-attr_selector,
+.hljs-pseudo,
+.hljs-addition,
+.hljs-stream,
+.hljs-envvar,
+.apache .hljs-tag,
+.apache .hljs-cbracket,
+.tex .hljs-command,
+.hljs-prompt,
+.hljs-link_label,
+.hljs-link_url {
+  color: #e6db74;
+}
+
+.hljs-comment,
+.hljs-annotation,
+.hljs-decorator,
+.hljs-pi,
+.hljs-doctype,
+.hljs-deletion,
+.hljs-shebang,
+.apache .hljs-sqbracket,
+.tex .hljs-formula {
+  color: #75715e;
+}
+
+.coffeescript .javascript,
+.javascript .xml,
+.tex .hljs-formula,
+.xml .javascript,
+.xml .vbscript,
+.xml .css,
+.xml .hljs-cdata,
+.xml .php,
+.php .xml {
+  opacity: 0.5;
+}
+

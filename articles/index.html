@@ -3,18 +3,16 @@
   <head>
     <meta charset="utf-8">
     <title>Articles | MoroccoJS</title>
-    <meta name="description" content="General JavaScript articles">
     <meta name="author" content="SilverPillar">
     <meta name="description" content="General JavaScript articles">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Articles">
+<meta property="og:title" content="MoroccoJS">
 <meta property="og:url" content="https://moroccojs.org/articles/index.html">
 <meta property="og:site_name" content="MoroccoJS">
 <meta property="og:description" content="General JavaScript articles">
 <meta property="og:image" content="https://moroccojs.org/img/logo.png">
-<meta property="og:updated_time" content="2015-08-11T14:35:44.583Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Articles">
+<meta name="twitter:title" content="MoroccoJS">
 <meta name="twitter:description" content="General JavaScript articles">
     <link rel="shortcut icon" href="/favicon.ico">
 
@@ -51,7 +49,10 @@
     <div class="item">
       <div class="ui transparent icon input">
         <i class="search icon"></i>
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="https://moroccojs.org"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+          <input name="q" results="0" class="search-form-input" placeholder="Search" type="text">
+          <input name="sitesearch" value="https://moroccojs.org" type="hidden">
+        </form>
       </div>
     </div>
     <a href="/about" title="About" class="item grey ">About</a>
@@ -84,16 +85,32 @@
 
         <div class="section-content">
           
-  <div class="ui yellow icon message">
-  <i class="remove icon"></i>
-  <div class="content">
-    <div class="header">
-      No articles yet :(
+  <div class="ui one column grid">
+    
+      <div class="column">
+  <div class="ui yellow special fluid card">
+    <a href="/articles/Community-101/" class="content">
+      <img class="post-img" src="/articles/Community-101/thumbnail.png" alt="" />
+      <div class="header">Community 101</div>
+      <div class="meta">
+        <span class="date">22nd August 2015</span>
+      </div>
+      <div class="description">
+        Introducing MoroccoJS and contribution guide
+      </div>
+    </a>
+    <div class="extra content">
+      <img class="ui avatar image" src="http://www.gravatar.com/avatar/b4dab15877a1d650c9480777f5b7168f?s=50"> <a href="https://github.com/YoussefKababe" title="Youssef Kababe" target="_blank" rel="external">Youssef Kababe</a>
+      <span class="right floated">
+        Articles
+      </span>
     </div>
-    <p>But don't be sad! Just come back again soon and you may find interesting stuff.</p>
   </div>
 </div>
 
+    
+  </div>
+  
 
 
 
@@ -133,5 +150,13 @@
 
     <script src="/components/jquery/dist/jquery.min.js" type="text/javascript"></script>
     <script src="/components/semantic-ui/dist/semantic.min.js" type="text/javascript"></script>
+    <script src="/components/highlightjs/highlight.pack.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+      $('figure.highlight').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });
+    </script>
   </body>
 </html>
