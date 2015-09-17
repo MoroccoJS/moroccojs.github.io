@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>npm based front-end workflow | MoroccoJS</title>
+    <meta name="author" content="Youssef Kababe">
+    <meta name="description" content="A tutorial on how to use npm to easily manage your front-end dependencies and compile your assets">
+<meta property="og:type" content="article">
+<meta property="og:title" content="npm based front-end workflow">
+<meta property="og:url" content="https://moroccojs.org/tutorials/npm-based-front-end-workflow/index.html">
+<meta property="og:site_name" content="MoroccoJS">
+<meta property="og:description" content="A tutorial on how to use npm to easily manage your front-end dependencies and compile your assets">
+<meta property="og:image" content="https://moroccojs.org/tutorials/npm-based-front-end-workflow/thumbnail.png">
+<meta property="og:updated_time" content="2015-09-17T12:10:00.564Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="npm based front-end workflow">
+<meta name="twitter:description" content="A tutorial on how to use npm to easily manage your front-end dependencies and compile your assets">
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link rel="stylesheet" href="/components/semantic-ui/dist/semantic.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+  </head>
+
+  <body>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=529694297184858";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+    
+  
+  <header class="olive">
+
+  <div class="background"></div>
+  <div class="ui container">
+    <div class="ui menu">
+  <a class="header item" href="/">
+    <img src="/img/logo.png" alt="MoroccoJS">
+  </a>
+  <a href="/articles" title="Articles" class="item yellow ">Articles</a>
+  <a href="/tutorials" title="Tutorials" class="item olive active">Tutorials</a>
+  <a href="/news" title="News" class="item purple ">News</a>
+  <a href="/events" title="Events" class="item pink ">Events</a>
+  <a href="/jobs" title="Jobs" class="item blue ">Jobs</a>
+
+  <div class="right menu">
+    <div class="item">
+      <div class="ui transparent icon input">
+        <i class="search icon"></i>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+          <input name="q" results="0" class="search-form-input" placeholder="Search" type="text">
+          <input name="sitesearch" value="https://moroccojs.org" type="hidden">
+        </form>
+      </div>
+    </div>
+    <a href="/about" title="About" class="item grey ">About</a>
+  </div>
+</div>
+
+    <div class="jumbotron">
+      <h1 class="ui inverted header">
+        <span class="library">npm based front-end workflow</span>
+      </h1>
+    </div>
+  </div>
+</header>
+
+    <div class="ui main container">
+      <section class="main-section">
+        <div class="section-header">
+          <div class="ui large breadcrumb">
+  
+    <a class="section" href="/">Home</a>
+  
+
+  
+    <i class="right chevron icon divider"></i>
+    <a class="section" href="../">Tutorials</a>
+    <i class="right chevron icon divider"></i>
+    <div class="active section">npm based front-end workflow</div>
+  
+</div>
+
+        </div>
+
+        <div class="section-content">
+          <div class="article-wrapper">
+  <ul class="post-meta">
+    <li><i class="calendar outline icon"></i>13th September 2015</li>
+    <li><img class="ui avatar image" src="https://www.gravatar.com/avatar/b4dab15877a1d650c9480777f5b7168f?s=50"> <a href="https://github.com/YoussefKababe" title="Youssef Kababe" target="_blank" rel="external">Youssef Kababe</a></li>
+  </ul>
+  <div class="ui divider"></div>
+  <p>Long gone are the days where developers used to download dependencies manually, place them in their project folder, and include them in their web page using multiple <strong>script</strong> and <strong>link</strong> tags. The fast evolution of web development gave birth to a wide variety of tools that help developers speed up their workflow, write clean code, automate repetitive tasks, and maintain maximum performance.</p>
+<p>A modern front-end workflow would be as follows:</p>
+<ul>
+<li>Using <a href="http://bower.io/" target="_blank">Bower</a> to easily manage the packages your project depends on.</li>
+<li>Using CSS and JS preprocessors for code modularity and simplicity, for example <a href="http://lesscss.org/" target="_blank">Less</a> and <a href="http://coffeescript.org/" target="_blank">CoffeeScript</a>.</li>
+<li>Using a task runner, <a href="http://gulpjs.com/" target="_blank">Gulp</a> or <a href="http://gruntjs.com/" target="_blank">Grunt</a>, to automate assets compilation and minification.</li>
+</ul>
+<p>This was my personal setup a while ago before changing some parts recently.</p>
+<p>As you probably know, <a href="https://www.npmjs.com/" target="_blank">npm</a> is the larget ecosystem of open source libraries in the world. And alongside being a powerful package manager, npm can also be used as a simple script runner, which we can benefit from to avoid the need of any other task runners. Furthermore, many people mistake npm as being a package manager for back-end libraries only, or as being the “Node Package Manager”, that’s totally wrong! npm contains all open source libraries related to HTML, CSS, and JavaScript. You can read more about that in this <a href="http://blog.npmjs.org/post/101775448305/npm-and-front-end-packaging" target="_blank">post</a> from npm’s blog.</p>
+<p>With that being said, It’s clear now that you don’t really need all the tools I stated above to manage your front-end project, you can literally use npm to do everything and that’s what we will do now! We’ll create a simple website by managing everything using npm!</p>
+<h2 id="The_setup">The setup</h2><p>The first step to start building our website is, of course, to create a folder where we will put everything, then we will use <strong>npm init</strong> to set it up:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir Lab/website &amp;&amp; <span class="built_in">cd</span> Lab/website</span><br><span class="line">$ npm init</span><br></pre></td></tr></table></figure>
+<img src="/tutorials/npm-based-front-end-workflow/npm-init.png" alt="npm-init.png" title="">
+<p><strong>npm init</strong> will take you trough some simple steps to create your <strong>package.json</strong> file, this is the file that will keep track of all your project’s dependencies, and this is where you will also be writing the tasks you want to automate.</p>
+<p>Let’s now take care of setting up our project’s structure:</p>
+<img src="/tutorials/npm-based-front-end-workflow/structure.png" alt="structure.png" title="">
+<p>As you can see from the picture, we will have two main folders, <strong>src</strong> and <strong>dist</strong>. The first one will contain the plain source code of our website, while the second one will contain the production version with compiled and minified assets.</p>
+<h2 id="HTML">HTML</h2><p>The next step is to setup our <strong>index.html</strong> page:</p>
+<figure class="highlight html"><figcaption><span>website/src/index.html</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="doctype">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"utf-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">title</span>&gt;</span>My website<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">href</span>=<span class="value">"css/style.css"</span> <span class="attribute">charset</span>=<span class="value">"utf-8"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">p</span>&gt;</span>Hello World!<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/bundle.js"</span> <span class="attribute">charset</span>=<span class="value">"utf-8"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>As you might have noticed, I have put just one <strong>link</strong> and one <strong>script</strong> tags, because the idea is that all our CSS and JavaScript files will be compiled and concatenated into one single file. This will make our website renders faster because we will make less request to the server and we’ll have less files to fetch!</p>
+<p>Now is the time to minify our cool HTML page and save it to the dist folder! For this I’m going to install a package called <a href="https://www.npmjs.com/package/html-minifier" target="_blank">html-minifier</a> from npm:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install html-minifier --save-dev</span><br></pre></td></tr></table></figure>
+<p>The reason I added <strong>–save-dev</strong> is to save the package as a development dependency in our <strong>package.json</strong> file, this also adds the package to the <strong>./node_modules/.bin</strong> folder so it can be executed using npm.</p>
+<p>Now to minify our HTML page we should normally type the following line in the terminal:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ html-minifier --collapse-whitespace ./src/index.html -o ./dist/index.html</span><br></pre></td></tr></table></figure>
+<p>Tried it? Didn’t work, right? The reason it didn’t work is because we didn’t install the package globally and your system doesn’t know where to find <strong>html-minifier</strong>. We should instead add the line above to our <strong>package.json</strong> file as a script and run it using npm:</p>
+<figure class="highlight javascript"><figcaption><span>website/package.json</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"name"</span>: <span class="string">"website"</span>,</span><br><span class="line">  <span class="string">"version"</span>: <span class="string">"1.0.0"</span>,</span><br><span class="line">  <span class="string">"description"</span>: <span class="string">"My npm based website"</span>,</span><br><span class="line">  <span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"html"</span>: <span class="string">"html-minifier --collapse-whitespace ./src/index.html -o ./dist/index.html"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"author"</span>: <span class="string">"Youssef Kababe"</span>,</span><br><span class="line">  <span class="string">"devDependencies"</span>: &#123;</span><br><span class="line">    <span class="string">"html-minifier"</span>: <span class="string">"^0.7.2"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>You can give your script any name you like, I chose “html” just for simplicity. We can now execute our script like this:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm run html</span><br></pre></td></tr></table></figure>
+<img src="/tutorials/npm-based-front-end-workflow/npm-run-html.png" alt="npm-run-html.png" title="">
+<p>You will then find your minified web page inside the <strong>dist</strong> folder. Minification removes all the unnecessary stuff like comments and white spaces, thus producing files with smaller size, which gives our website’s loading speed an important boost.</p>
+<h2 id="CSS">CSS</h2><p>I’m going to use <a href="https://learnboost.github.io/stylus/" target="_blank">Stylus</a> as my CSS preprocessor, so we’ll start by installing the <a href="https://www.npmjs.com/package/stylus" target="_blank">Stylus</a> package from npm:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install stylus --save-dev</span><br></pre></td></tr></table></figure>
+<p>You should always make your style files modular, which means you need to have one main file that includes styles from other files in the directory. I usually create a folder called “includes” where I put all the files that I will be including.</p>
+<img src="/tutorials/npm-based-front-end-workflow/css-includes.png" alt="css-includes.png" title="">
+<figure class="highlight stylus"><figcaption><span>website/src/css/includes/paragraphs.styl</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">body</span></span><br><span class="line">  <span class="tag">p</span></span><br><span class="line">    <span class="attribute">color</span> <span class="hexcolor">#fff</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight stylus"><figcaption><span>website/src/css/main.styl</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="at_rule">@import</span> <span class="string">"includes/paragraphs"</span></span><br><span class="line"></span><br><span class="line">bkgdcolor = <span class="hexcolor">#2481A3</span></span><br><span class="line"></span><br><span class="line"><span class="tag">body</span></span><br><span class="line">  <span class="attribute">background</span> bkgdcolor</span><br></pre></td></tr></table></figure>
+<p>The next thing we should do, as you might have guessed, is to add a task to compile and minify our CSS:</p>
+<figure class="highlight javascript"><figcaption><span>website/package.json</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="string">"css"</span>: <span class="string">"stylus --include ./node_modules --compress ./src/css/main.styl -o ./dist/css/style.css"</span></span><br><span class="line">&#125;,</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>The last thing to do to compile your CSS is to type “<strong>npm run css</strong>“ in your terminal, then you should able to see your compiled and minified code in the <strong>dist</strong> directory:</p>
+<img src="/tutorials/npm-based-front-end-workflow/npm-run-css.png" alt="npm-run-css.png" title="">
+<p>Notice that I added “<strong>–include ./node_modules –include-css</strong>“ to our script, the reason for this is that you might want to include CSS files from other npm packages. For example, let’s say we want to add <a href="http://getbootstrap.com/" target="_blank">Bootstrap</a> to our project:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install bootstrap --save</span><br></pre></td></tr></table></figure>
+<p>This time I used <strong>–save</strong> instead of <strong>–save-dev</strong>, that’s because we’re not going to use Bootstrap in a npm script. npm will now take care of fetching the package with all it’s dependencies (except development dependencies) and place everything in the <strong>./node_modules</strong> folder.</p>
+<p>The next step is to include Bootstrap’s CSS file in our <strong>main.styl</strong> file:</p>
+<figure class="highlight stylus"><figcaption><span>website/src/css/main.styl</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="at_rule">@import</span> <span class="string">"bootstrap/dist/css/bootstrap.min.css"</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>We’re done! We have now successfuly added BootStrap’s CSS to our project. When you compile your CSS next time, Stylus will look for “<strong>bootstrap/dist/css/bootstrap.min.css</strong>“ inside <strong>./node_modules</strong> and include it. You see how easy it is? No more downloading, extracting, or copying!</p>
+<h2 id="JavaScript">JavaScript</h2><p>I’m going to use just plain JavaScript in my project, with the help of <a href="http://browserify.org/" target="_blank">Browserify</a> and <a href="http://lisperator.net/uglifyjs/" target="_blank">UglifyJS</a>.</p>
+<p>Browserify is a tool that lets you include npm JavaScript modules in the browser using the <a href="http://www.commonjs.org/specs/modules/1.0/" target="_blank">CommonJS</a> <strong>require</strong> style, so you can require modules and other JavaScript files like you would do when developping a <a href="https://nodejs.org/en/" target="_blank">Node.js</a> application.</p>
+<p>Then we will pipe Browserify’s outpute through UglifyJS to have a minified JavaScript files.</p>
+<p>Let’s install Browserify and UglifyJS now:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install browserify uglify-js --save-dev</span><br></pre></td></tr></table></figure>
+<p>We’ll include Bootstrap’s JavaScript from the package we installed earlier in the CSS section, and because Bootstrap depends on <a href="https://jquery.com/" target="_blank">jQuery</a>, we also have to install it too:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install jquery --save</span><br></pre></td></tr></table></figure>
+<p>Now we’re ready to write our main JavaScript file.</p>
+<figure class="highlight javascript"><figcaption><span>website/src/js/main.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $ = <span class="built_in">require</span>(<span class="string">'jquery'</span>);</span><br><span class="line">global.jQuery = global.$ = $;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> bootstrap = <span class="built_in">require</span>(<span class="string">'bootstrap'</span>);</span><br><span class="line"></span><br><span class="line">alert(<span class="string">"Hello World!"</span>);</span><br></pre></td></tr></table></figure>
+<p>As you can see from line 2, I exposed jQuery as a global variable, if we didn’t do this, we’ll get a “<strong>ReferenceError</strong>“ telling us that jQuery was not defined. That’s because Browserify bundles your required libraries in a way that they can never conflict with each other, which makes libraries that depend on jQuery unable to find it. So you have to manually expose jQuery to the global (window) object.</p>
+<p>You can do the same thing we did with CSS and create a folder called “<strong>includes</strong>“ to keep your code modular instead of putting all the JavaScript in the main file.</p>
+<p>Now to compile and minify our JavaScript file, we’ll add the following script to the <strong>package.json</strong> file:</p>
+<figure class="highlight javascript"><figcaption><span>website/package.json</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="string">"js"</span>: <span class="string">"browserify ./src/js/main.js | uglifyjs &gt; ./dist/js/bundle.js"</span></span><br><span class="line">&#125;,</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h2 id="Fonts">Fonts</h2><p>Some npm packages like <a href="https://www.npmjs.com/package/bootstrap" target="_blank">Bootstrap</a> and <a href="https://www.npmjs.com/package/font-awesome" target="_blank">Font Awesome</a> come with font files bundled in them. For now, if you try to add a Bootstrap icon to your website, it will not render correctly because Bootstrap fonts are missing.</p>
+<p>Unless you’re not too lazy like me, you really don’t want to be copying font files manually from the <strong>./node_modules</strong> folder, for each package, to put them inside your <strong>dist</strong> folder. As a workaround to this issue, I ended up making a little package called <a href="https://www.npmjs.com/package/fontify" target="_blank">Fontify</a> which will do that for you:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install fontify --save-dev</span><br></pre></td></tr></table></figure>
+<p>Fontify requires a little configuration file called “<strong>fontify.json</strong>“ on the root directory of your project, you will use this file to tell Fontify which packages you want to copy font files from, and where you want to put them:</p>
+<figure class="highlight javascript"><figcaption><span>website/fontify.json</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"modules"</span>: [</span><br><span class="line">    <span class="string">"bootstrap"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="string">"dest"</span>: <span class="string">"dist"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Finally we’ll add a npm script for this:</p>
+<figure class="highlight javascript"><figcaption><span>website/package.json</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="string">"fonts"</span>: <span class="string">"fontify"</span></span><br><span class="line">&#125;,</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>Now type “<strong>npm run fonts</strong>“ in your terminal and you’ll find that all Bootstrap fonts were carefully copied to <strong>./dist/fonts</strong> folder:</p>
+<img src="/tutorials/npm-based-front-end-workflow/fonts.png" alt="fonts.png" title="">
+<h2 id="Automate_the_build_process">Automate the build process</h2><p>Automation has been keeping developers from losing their minds and going crazy for ages! This is why we won’t be executing our scripts manually one by one everytime. We will instead automate the building process step by step.</p>
+<p>First thing to do is to make a script that will build our entire project at once:</p>
+<figure class="highlight javascript"><figcaption><span>website/package.json</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="string">"build"</span>: <span class="string">"npm run html &amp; npm run css &amp; npm run js &amp; npm run fonts"</span></span><br><span class="line">&#125;,</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>We will continue further with the automation process by watching assets files and executing scripts automatically when any change happens. To accomplish this task, we will use the <a href="https://www.npmjs.com/package/nodemon" target="_blank">Nodemon</a> package from npm as it’s the right tool for this job:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install nodemon --save-dev</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><figcaption><span>website/package.json</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="string">"watch-html"</span>: <span class="string">"nodemon --ext html --watch ./src/ --exec 'npm run html'"</span>,</span><br><span class="line">  <span class="string">"watch-css"</span>: <span class="string">"nodemon --ext styl --watch ./src/css --exec 'npm run css'"</span>,</span><br><span class="line">  <span class="string">"watch-js"</span>: <span class="string">"nodemon --ext js --watch ./src/js --exec 'npm run js'"</span>,</span><br><span class="line">  <span class="string">"watch"</span>: <span class="string">"npm run watch-html &amp; npm run watch-css &amp; npm run watch-js"</span></span><br><span class="line">&#125;,</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>Now when you type “<strong>npm run watch</strong>“, Nodemon will start watching all our assets and will execute the right command depending on what has been changed in your project directory:</p>
+<img src="/tutorials/npm-based-front-end-workflow/npm-run-watch.png" alt="npm-run-watch.png" title="">
+<h2 id="Live_development_server">Live development server</h2><p>It would be awesome if our web page could refresh itself automatically when we make some changes instead of manually refreshing it everytime! <a href="https://www.npmjs.com/package/live-server" target="_blank">live-server</a> is an awesome development server with live reload capability, so we’re going to install it and use it for our project:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install live-server --save-dev</span><br></pre></td></tr></table></figure>
+<p>Then we’ll add a script that will watch our assets and lunch the development at the same time:</p>
+<figure class="highlight javascript"><figcaption><span>website/package.json</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="string">"server"</span>: <span class="string">"npm run watch &amp; live-server --port=3000 ./dist"</span></span><br><span class="line">&#125;,</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>All you should do now is typing “<strong>npm run server</strong>“ in your terminal, this will make Nodemon watch you source files for changes and recompile them automaticall, and launch a live development server on port <strong>3000</strong>, the server will be watching files in the <strong>./dist</strong> folder for changes, and will reload your page whenever it detects something.</p>
+<h2 id="The_end">The end</h2><p>Your final <strong>package.json</strong> file should look something like this:</p>
+<figure class="highlight javascript"><figcaption><span>website/package.json</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"name"</span>: <span class="string">"website"</span>,</span><br><span class="line">  <span class="string">"version"</span>: <span class="string">"1.0.0"</span>,</span><br><span class="line">  <span class="string">"description"</span>: <span class="string">"My npm based website"</span>,</span><br><span class="line">  <span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"html"</span>: <span class="string">"html-minifier --collapse-whitespace ./src/index.html -o ./dist/index.html"</span>,</span><br><span class="line">    <span class="string">"css"</span>: <span class="string">"stylus --include ./node_modules --include-css --compress ./src/css/main.styl -o ./dist/css/style.css"</span>,</span><br><span class="line">    <span class="string">"js"</span>: <span class="string">"browserify ./src/js/main.js | uglifyjs &gt; ./dist/js/bundle.js"</span>,</span><br><span class="line">    <span class="string">"fonts"</span>: <span class="string">"fontify"</span>,</span><br><span class="line">    <span class="string">"build"</span>: <span class="string">"npm run html &amp; npm run css &amp; npm run js &amp; npm run fonts"</span>,</span><br><span class="line">    <span class="string">"watch-html"</span>: <span class="string">"nodemon -e html -w ./src/ -x 'npm run html'"</span>,</span><br><span class="line">    <span class="string">"watch-css"</span>: <span class="string">"nodemon -e styl -w ./src/css -x 'npm run css'"</span>,</span><br><span class="line">    <span class="string">"watch-js"</span>: <span class="string">"nodemon -e js -w ./src/js -x 'npm run js'"</span>,</span><br><span class="line">    <span class="string">"watch"</span>: <span class="string">"npm run watch-html &amp; npm run watch-css &amp; npm run watch-js"</span>,</span><br><span class="line">    <span class="string">"server"</span>: <span class="string">"npm run watch &amp; live-server --port=3000 ./dist"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"author"</span>: <span class="string">"Youssef Kababe"</span>,</span><br><span class="line">  <span class="string">"devDependencies"</span>: &#123;</span><br><span class="line">    <span class="string">"browserify"</span>: <span class="string">"^11.1.0"</span>,</span><br><span class="line">    <span class="string">"fontify"</span>: <span class="string">"0.0.2"</span>,</span><br><span class="line">    <span class="string">"html-minifier"</span>: <span class="string">"^0.7.2"</span>,</span><br><span class="line">    <span class="string">"live-server"</span>: <span class="string">"^0.8.1"</span>,</span><br><span class="line">    <span class="string">"stylus"</span>: <span class="string">"^0.52.4"</span>,</span><br><span class="line">    <span class="string">"uglify-js"</span>: <span class="string">"^2.4.24"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"dependencies"</span>: &#123;</span><br><span class="line">    <span class="string">"bootstrap"</span>: <span class="string">"^3.3.5"</span>,</span><br><span class="line">    <span class="string">"jquery"</span>: <span class="string">"^2.1.4"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Using stylus and plain JavaScript is just a matter of choice, you can replace them with anything you want and you’ll always find tha packages you need on <a href="https://www.npmjs.com" target="_blank">npm</a>. You can also structure your project in any way that suits you the best!</p>
+<p>Another thing you can do is to use what we did in this tutorial as a reusable skeleton for your future front-end projects instead of starting from scratch each time.</p>
+
+</div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'moroccojs';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+      </section>
+      <aside class="sidebar">
+  <div class="sidebar-header">
+    <p>Follow us: </p>
+    <ul class="social-icons">
+      <li><a href="http://github.com/MoroccoJS" target="_blank"><i class="github square icon"></i></a></li>
+      <li><a href="http://facebook.com/MoroccoJS" target="_blank"><i class="facebook square icon"></i></a></li>
+      <li><a href="" target="_blank"><i class="google plus square icon"></i></a></li>
+      <li><a href="" target="_blank"><i class="twitter square icon"></i></a></li>
+      <li><a href="http://slack.moroccojs.org" target="_blank"><i class="slack icon"></i></a></li>
+    </ul>
+  </div>
+
+  <div class="sidebar-content">
+    <div class="ui medium rectangle test ad" data-text="Advertisement"></div>
+    <div class="fb-page" data-href="https://www.facebook.com/MoroccoJS" data-width="300" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/MoroccoJS"><a href="https://www.facebook.com/MoroccoJS">MoroccoJS</a></blockquote></div></div>
+  </div>
+</aside>
+
+    </div>
+    <footer>
+  <div class="ui container">
+    <p class="copyright">
+      &#169; <span><a href="/" title="MoroccoJS">MoroccoJS</a></span> 2015. All rights reserved.
+    </p>
+
+    <p class="credit">
+      Designed by <span><a href="http://silverpillar.com" title="SilverPillar" target="_blank" rel="external">SilverPillar</a></span> and proudly hosted by <span><a href="http://github.com" title="GitHub" target="_blank" rel="external">GitHub</a></span>.
+    </p>
+  </div>
+</footer>
+
+
+    <script src="/components/jquery/dist/jquery.min.js" type="text/javascript"></script>
+    <script src="/components/semantic-ui/dist/semantic.min.js" type="text/javascript"></script>
+    <script src="/components/highlightjs/highlight.pack.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+      $('figure.highlight').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });
+    </script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-36442752-5', 'auto');
+      ga('send', 'pageview');
+    </script>
+  </body>
+</html>

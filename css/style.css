@@ -93,6 +93,7 @@ header .container .jumbotron .header {
   background: #fff;
   border-right: 1px solid rgba(0,0,0,0.1);
   padding: 13px 15px;
+  border-bottom-left-radius: 4px;
 }
 .main-section .section-content .article-wrapper {
   padding-bottom: 30px;
@@ -148,6 +149,7 @@ header .container .jumbotron .header {
   margin-bottom: 20px;
 }
 .main-section .section-content .article-wrapper figure.highlight {
+  background: #2f3239;
   margin: 20px 0 20px 0;
   border: 1px solid rgba(0,0,0,0.1);
   border-radius: 4px;
