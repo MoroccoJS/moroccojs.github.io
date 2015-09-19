@@ -251,6 +251,9 @@ header .container .jumbotron .header {
 .sidebar .sidebar-content div {
   margin-bottom: 13px !important;
 }
+.sidebar .sidebar-content div img {
+  max-width: 100%;
+}
 .breadcrumb a.section {
   color: #fff;
 }
