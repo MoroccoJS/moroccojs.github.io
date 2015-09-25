@@ -109,6 +109,11 @@ header .container .jumbotron .header {
   margin-right: 20px;
   color: rgba(0,0,0,0.4);
 }
+.main-section .section-content .article-wrapper .post-meta li .addthis_sharing_toolbox {
+  display: inline;
+  float: right;
+  margin-top: -6px;
+}
 .main-section .section-content .article-wrapper .post-meta li i {
   color: rgba(0,0,0,0.87);
 }
