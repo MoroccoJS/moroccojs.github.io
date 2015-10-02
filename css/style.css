@@ -95,6 +95,10 @@ header .container .jumbotron .header {
   padding: 13px 15px;
   border-bottom-left-radius: 4px;
 }
+.main-section .section-content .ad {
+  width: 728px;
+  margin: 30px auto 0;
+}
 .main-section .section-content .article-wrapper {
   padding-bottom: 30px;
   margin-bottom: 20px;
